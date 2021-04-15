@@ -129,5 +129,16 @@ class PolenCharityDonationApi
     RestClient.post("#{@base_url}/donation/notify/create", payload.to_json, { content_type: :json, params: params })
   end
 
+  #Finance
+
+  # Método que retorna faturas da loja
+  # @param params parametros de configuração
+  # @return Object
+  def get_finance_billing_list(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/finance/billing/list", params: params)
+  end
+
+
 end
 
