@@ -146,7 +146,61 @@ class PolenCharityDonationApi
   # @return Object
   def get_platform_list(params = {})
     params[:api_token] = @api_token
-    RestClient.get("#{@base_url}#{@version}/platform/list", params: params)
+    RestClient.get("#{@base_url}/platform/list", params: params)
+  end
+
+  #Store
+
+  # Método que retorna detalhes de uma loja
+  # @param params parametros de configuração
+  # @return Object
+  def get_store_details(params = {})
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/store/detail", params: params)
+  end
+
+  # Método que retorna uma lista de lojas cadastradas em uma conta
+  # @param params parametros de configuração
+  # @return Object
+  def get_store_list(params = {})
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/store/list", params: params)
+  end
+
+  # Método que atualiza uma loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def update_store(payload, params)
+    params[:api_token] = @api_token
+    RestClient.put("#{@base_url}/store/update", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método que adiciona uma causa a uma loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def add_cause_store(payload, params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/store/cause/add", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método para cadastar uma nova loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def create_store(payload, params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/store/create", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método para remover uma causa de uma loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def remove_cause_store(payload, params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/store/cause/remove", payload.to_json, { content_type: :json, params: params })
   end
 
 end
