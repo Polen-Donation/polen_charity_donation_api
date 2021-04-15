@@ -139,6 +139,15 @@ class PolenCharityDonationApi
     RestClient.get("#{@base_url}/finance/billing/list", params: params)
   end
 
+  #Plataform
+
+  # Método que retorna uma lista de plataformas cadastradas
+  # @param params parametros de configuração
+  # @return Object
+  def get_platform_list(params = {})
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}#{@version}/platform/list", params: params)
+  end
 
 end
 
