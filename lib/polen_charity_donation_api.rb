@@ -93,5 +93,41 @@ class PolenCharityDonationApi
     RestClient.post("#{@base_url}/donation/direct", payload.to_json, { content_type: :json, params: params })
   end
 
+  #Donation Notify
+
+  # Método que retorna os detalhes de uma doação
+  # @param params parametros de configuração
+  # @return Object
+  def get_notify_donation(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/donation/notify/detail", params: params)
+  end
+
+  # Método que retorna uma lista de doações de uma loja
+  # @param params parametros de configuração
+  # @return Object
+  def get_notify_donation_list(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/donation/notify/list", params: params)
+  end
+
+  # Método que atualiza o status da doação
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def update_notify_donation(payload, params)
+    params[:api_token] = @api_token
+    RestClient.put("#{@base_url}/donation/notify/update", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método que adiciona uma nova doação feita em uma loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def create_notify_donation(payload, params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/donation/notify/create", payload.to_json, { content_type: :json, params: params })
+  end
+
 end
 
