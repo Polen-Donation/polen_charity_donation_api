@@ -4,7 +4,7 @@ require_relative "polen_charity_donation_api/version"
 require "rest-client"
 require "json"
 
-class PolenCharityDonationApi
+class PolenCharityDonation
   attr_reader :api_token, :base_url
   # @param api_token token de acesso
   def initialize(api_token)
