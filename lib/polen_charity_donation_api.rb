@@ -38,5 +38,49 @@ class PolenCharityDonationApi
     RestClient.get("#{@base_url}/cause", params: params)
   end
 
+  #Company
+
+  # Método que retorna detalhe de uma empresa
+  # @param params parametros de configuração
+  # @return Object
+  def get_company_details(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/company/detail", params: params)
+  end
+
+  # Método que retorna todas as empresas de uma conta
+  # @param params parametros de configuração
+  # @return Object
+  def get_company_list(params={})
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/company/list", params: params)
+  end
+
+  # Método que retorna as lojas de uma empresa
+  # @param params parametros de configuração
+  # @return Object
+  def get_company_stores(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/company/stores", params: params)
+  end
+
+  # Método que atualiza os dados de uma empresa
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def update_company(payload, params)
+    params[:api_token] = @api_token
+    RestClient.put("#{@base_url}/company/update", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método que cria uma nova empresa na em uma conta
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def create_company(payload, params={})
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/company/create", payload.to_json, { content_type: :json, params: params })
+  end
+
 end
 
