@@ -82,5 +82,16 @@ class PolenCharityDonationApi
     RestClient.post("#{@base_url}/company/create", payload.to_json, { content_type: :json, params: params })
   end
 
+  #Donation Direct
+
+  # Método que cria uma doação direta
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def donation_direct(payload, params={})
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/donation/direct", payload.to_json, { content_type: :json, params: params })
+  end
+
 end
 
