@@ -203,5 +203,49 @@ class PolenCharityDonationApi
     RestClient.post("#{@base_url}/store/cause/remove", payload.to_json, { content_type: :json, params: params })
   end
 
+  # Transparency
+
+  # Método que retorna um consolidado total já doado
+  # @param params parametros de configuração
+  # @return Object
+  def get_impact_consolidated(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/transparency/impact/consolidated", params: params)
+  end
+
+  # Método que retorna os detalhes de um conteúdo em especifico
+  # @param params parametros de configuração
+  # @return Object
+  def get_content_detail(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/transparency/content/detail", params: params)
+  end
+
+  # Método que retorna os recibos de doações
+  # @param params parametros de configuração
+  # @return Object
+  def get_transparency_receipts(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/transparency/receipts", params: params)
+  end
+
+  # Método que retorna uma lista de conteúdos da instituição apoiada
+  # @param params parametros de configuração
+  # @return Object
+  def get_content_list(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/transparency/content/list", params: params)
+  end
+
+  #Transaction
+
+  # Método que retorna uma lista de conteúdos da instituição apoiada
+  # @param params parametros de configuração
+  # @return Object
+
+  def update_status_transaction(params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/transaction/update/status",{}, params: params)
+  end
 end
 
