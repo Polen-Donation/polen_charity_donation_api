@@ -247,5 +247,58 @@ class PolenCharityDonationApi
     params[:api_token] = @api_token
     RestClient.post("#{@base_url}/transaction/update/status",{}, params: params)
   end
+
+  #User
+
+  # Método que retorna detalhes de um usuário
+  # @param params parametros de configuração
+  # @return Object
+  def get_user_details(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/user/detail", params: params)
+  end
+
+  # Método que retorna detalhes do impacto causado pelo usuário
+  # @param params parametros de configuração
+  # @return Object
+  def get_user_impact(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/user/impact", params: params)
+  end
+
+  # Método que retorna a lista de usuários de uma loja
+  # @param params parametros de configuração
+  # @return Object
+  def get_user_list(params)
+    params[:api_token] = @api_token
+    RestClient.get("#{@base_url}/user/list", params: params)
+  end
+
+  # Método que atualiza um usuário de uma loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def update_user(payload, params)
+    params[:api_token] = @api_token
+    RestClient.put("#{@base_url}/user/update", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método que atualiza um usuário de uma loja
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def create_user(payload, params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/user/create", payload.to_json, { content_type: :json, params: params })
+  end
+
+  # Método que adiciona ou remove uma causa a um usuário
+  # @param payload dados para atualização
+  # @param params parametros de configuração
+  # @return Object
+  def add_user_cause(payload, params)
+    params[:api_token] = @api_token
+    RestClient.post("#{@base_url}/user/create", payload.to_json, { content_type: :json, params: params })
+  end
 end
 
